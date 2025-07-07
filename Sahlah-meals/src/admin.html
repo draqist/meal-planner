@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Build-A-Meal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ Build-A-Meal Admin Dashboard</h1>
+            <p>Manage and view all meal orders</p>
+            <nav class="admin-nav">
+                <a href="index.html" class="nav-link">← Back to Meal Builder</a>
+                <button id="refreshBtn" class="refresh-btn">🔄 Refresh Orders</button>
+            </nav>
+        </header>
+
+        <main class="admin-content">
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <h3>Total Orders</h3>
+                    <p id="totalOrders">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Orders</h3>
+                    <p id="pendingOrders">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed Orders</h3>
+                    <p id="completedOrders">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Today's Orders</h3>
+                    <p id="todayOrders">0</p>
+                </div>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="filters-section">
+                <div class="filter-group">
+                    <label for="statusFilter">Filter by Status:</label>
+                    <select id="statusFilter">
+                        <option value="">All Orders</option>
+                        <option value="pending">Pending</option>
+                        <option value="preparing">Preparing</option>
+                        <option value="ready">Ready</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="mealFilter">Filter by Meal:</label>
+                    <select id="mealFilter">
+                        <option value="">All Meals</option>
+                        <option value="jollof-rice">Jollof Rice</option>
+                        <option value="fried-rice">Fried Rice</option>
+                        <option value="shawarma">Shawarma</option>
+                        <option value="grilled-chicken">Grilled Chicken</option>
+                        <option value="beef-stew">Beef Stew</option>
+                        <option value="fish-curry">Fish Curry</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="dateFilter">Filter by Date:</label>
+                    <input type="date" id="dateFilter">
+                </div>
+                <button id="clearFilters" class="clear-filters-btn">Clear Filters</button>
+            </section>
+
+            <!-- Orders Table -->
+            <section class="orders-section">
+                <div class="section-header">
+                    <h2>📋 All Orders</h2>
+                    <div class="table-controls">
+                        <span id="orderCount">Showing 0 orders</span>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table id="ordersTable" class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Meal</th>
+                                <th>Spices</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Orders will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="loadingMessage" class="loading-message">
+                    <p>🔄 Loading orders...</p>
+                </div>
+                
+                <div id="noOrdersMessage" class="no-orders-message" style="display: none;">
+                    <p>📭 No orders found</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close">&times;</span>
+            <h2>📋 Order Details</h2>
+            <div id="orderDetails">
+                <!-- Order details will be populated here -->
+            </div>
+            <div class="modal-actions">
+                <button id="updateStatusBtn" class="update-status-btn">Update Status</button>
+                <button id="closeModalBtn" class="close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Update Modal -->
+    <div id="statusModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🔄 Update Order Status</h2>
+            <div class="status-form">
+                <label for="newStatus">New Status:</label>
+                <select id="newStatus">
+                    <option value="pending">Pending</option>
+                    <option value="preparing">Preparing</option>
+                    <option value="ready">Ready</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <div class="form-actions">
+                    <button id="saveStatusBtn" class="save-status-btn">Save Status</button>
+                    <button id="cancelStatusBtn" class="cancel-status-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container">
+        <!-- Toast notifications will be added here -->
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html> 

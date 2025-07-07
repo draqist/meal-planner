@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build-A-Meal - Custom Meal Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ Build-A-Meal</h1>
+            <p>Create your perfect meal with our custom meal builder</p>
+            <nav class="main-nav">
+                <a href="admin.html" class="admin-link">📊 Admin Dashboard</a>
+            </nav>
+        </header>
+
+        <main class="meal-builder">
+            <form id="mealForm">
+                <!-- Meal Selection Section -->
+                <section class="form-section">
+                    <h2>Choose Your Meal</h2>
+                    <div class="form-group">
+                        <label for="mealSelect">Select a meal:</label>
+                        <select id="mealSelect" name="meal" required>
+                            <option value="">-- Choose a meal --</option>
+                            <option value="jollof-rice">Jollof Rice</option>
+                            <option value="fried-rice">Fried Rice</option>
+                            <option value="shawarma">Shawarma</option>
+                            <option value="grilled-chicken">Grilled Chicken</option>
+                            <option value="beef-stew">Beef Stew</option>
+                            <option value="fish-curry">Fish Curry</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- Ingredients Section -->
+                <section class="form-section" id="ingredientsSection" style="display: none;">
+                    <h2>Meal Ingredients</h2>
+                    <div id="ingredientsList" class="ingredients-grid">
+                        <!-- Ingredients will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Spice Mixes Section -->
+                <section class="form-section">
+                    <h2>Customize with Spice Mixes</h2>
+                    <p class="section-description">Select your preferred spice mixes to enhance your meal:</p>
+                    <div class="spice-grid">
+                        <div class="spice-item">
+                            <input type="checkbox" id="spice1" name="spices" value="curry-blend">
+                            <label for="spice1">Curry Blend</label>
+                        </div>
+                        <div class="spice-item">
+                            <input type="checkbox" id="spice2" name="spices" value="garlic-herb">
+                            <label for="spice2">Garlic & Herb</label>
+                        </div>
+                        <div class="spice-item">
+                            <input type="checkbox" id="spice3" name="spices" value="bbq-rub">
+                            <label for="spice3">BBQ Rub</label>
+                        </div>
+                        <div class="spice-item">
+                            <input type="checkbox" id="spice4" name="spices" value="cajun-spice">
+                            <label for="spice4">Cajun Spice</label>
+                        </div>
+                        <div class="spice-item">
+                            <input type="checkbox" id="spice5" name="spices" value="lemon-pepper">
+                            <label for="spice5">Lemon Pepper</label>
+                        </div>
+                        <div class="spice-item">
+                            <input type="checkbox" id="spice6" name="spices" value="italian-herbs">
+                            <label for="spice6">Italian Herbs</label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <section class="form-section">
+                    <button type="submit" id="submitBtn" class="submit-btn">
+                        🍴 Submit Order
+                    </button>
+                </section>
+            </form>
+        </main>
+
+        <!-- Order Summary Modal -->
+        <div id="orderModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>🎉 Order Summary</h2>
+                <div id="orderSummary">
+                    <!-- Order summary will be populated here -->
+                </div>
+                <button id="newOrderBtn" class="new-order-btn">Start New Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container">
+        <!-- Toast notifications will be added here -->
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html> 
